@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* UnTherapy Design System - Calming therapeutic interface
+All colors MUST be HSL for proper theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Soft therapeutic background */
+    --background: 200 30% 98%;
+    --foreground: 200 15% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system with gentle elevation */
+    --card: 200 50% 99%;
+    --card-foreground: 200 15% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover styling */
+    --popover: 200 50% 99%;
+    --popover-foreground: 200 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Calming teal for therapy branding */
+    --primary: 180 35% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 180 45% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Warm, supportive tone */
+    --secondary: 200 25% 92%;
+    --secondary-foreground: 200 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones for subtle UI elements */
+    --muted: 200 20% 95%;
+    --muted-foreground: 200 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Gentle lavender for highlights */
+    --accent: 250 25% 88%;
+    --accent-foreground: 250 15% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive: Soft warning colors */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs with therapeutic feel */
+    --border: 200 20% 88%;
+    --input: 200 20% 94%;
+    --ring: 180 35% 45%;
 
-    --radius: 0.5rem;
+    /* Therapeutic gradients */
+    --gradient-therapy: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-calm: linear-gradient(180deg, hsl(var(--accent)), hsl(var(--secondary)));
+    --gradient-avatar: linear-gradient(45deg, hsl(var(--primary-glow)), hsl(var(--accent)));
+
+    /* Shadows for depth */
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
+
+    /* Animation timing */
+    --transition-therapy: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +124,83 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Therapeutic component utilities */
+  .avatar-container {
+    @apply relative overflow-hidden rounded-3xl;
+    background: var(--gradient-avatar);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-therapy);
+  }
+
+  .avatar-container:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  .session-button {
+    @apply px-8 py-4 rounded-2xl font-semibold;
+    background: var(--gradient-therapy);
+    color: hsl(var(--primary-foreground));
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .session-button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .emotion-meter {
+    @apply rounded-2xl border border-border/50 backdrop-blur-sm;
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--accent) / 0.3));
+  }
+
+  .therapy-pulse {
+    animation: therapy-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@layer utilities {
+  .animate-therapy-fade {
+    animation: therapy-fade 0.8s ease-out;
+  }
+
+  .animate-breathing {
+    animation: breathing 4s ease-in-out infinite;
+  }
+}
+
+@keyframes therapy-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes therapy-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
   }
 }
