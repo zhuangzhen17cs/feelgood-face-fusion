@@ -161,15 +161,21 @@ export const UnTherapyLayout: React.FC = () => {
           </div>
         </div>
 
-        {/* Demo Note */}
-        {!isConnected && (
-          <div className="mt-6 p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-center">
+        {/* Demo Notes */}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-lg bg-blue-50 border border-blue-200 text-blue-800">
             <p className="text-sm">
-              <strong>Demo Mode:</strong> Backend connection not available. 
-              The interface is fully functional for demonstration purposes.
+              <strong>🎭 Face Tracking:</strong> Currently using simulated expressions. 
+              To enable real face tracking, integrate TensorFlow.js + MediaPipe in the useFaceTracking hook.
             </p>
           </div>
-        )}
+          <div className="p-4 rounded-lg bg-amber-50 border border-amber-200 text-amber-800">
+            <p className="text-sm">
+              <strong>🔌 Backend:</strong> WebSocket connection ready for backend integration at ws://localhost:3001. 
+              Update the URL in useWebSocket.ts to connect to your server.
+            </p>
+          </div>
+        </div>
       </main>
 
       {/* Footer */}

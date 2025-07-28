@@ -117,17 +117,26 @@ const {
 } = useCamera();
 ```
 
-### Face Tracking Hook
+### Face Tracking Hook (Demo Mode)
 ```typescript
 const {
-  landmarks,        // Facial landmark coordinates
-  expressions,      // Calculated expressions
+  landmarks,        // Simulated facial landmark coordinates
+  expressions,      // Calculated expressions (realistic simulation)
   isModelLoaded,    // Model ready status
   error,            // Tracking errors
-  processFrame,     // Process video frame
-  initializeModel   // Load TensorFlow model
+  processFrame,     // Process video frame (demo mode)
+  initializeModel   // Initialize demo system
 } = useFaceTracking();
 ```
+
+**Note:** The current implementation uses simulated face tracking for demo purposes. To enable real face tracking, you'll need to:
+
+1. Install TensorFlow.js dependencies:
+   ```bash
+   npm install @tensorflow/tfjs @tensorflow-models/face-landmarks-detection
+   ```
+
+2. Replace the demo implementation in `useFaceTracking.ts` with actual MediaPipe integration
 
 ## 🎨 Design System
 
